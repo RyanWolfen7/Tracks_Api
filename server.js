@@ -47,7 +47,7 @@ expressWinston.requestWhitelist.push('query')
 expressWinston.requestWhitelist.push('body')
 
 app.get('/', (req, res) => {
-    const buildNum = metadata.build_number;
+    const buildNum = metadata.build_number
     return res.send(`<h1>Click N Clear</h1><p>Build: ${buildNum}</p>`)
 })
 
@@ -62,7 +62,11 @@ app.get('/status', (req, res) => {
     })
 })
 
-
-http.createServer(app).listen(PORT, error => {
-    error ? console.log(`Unable to listen on port ${PORT}`, error) : console.log(`Listening on port ${PORT}`)
-})
+try {
+    require('./routes/index')(app)
+    http.createServer(app).listen(PORT, error => {
+        error ? console.log(`Unable to listen on port ${PORT}`, error) : console.log(`Listening on port ${PORT}`)
+    })
+} catch (err) {
+    console.log(err)
+}
