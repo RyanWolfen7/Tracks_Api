@@ -28,19 +28,23 @@ class TrackController {
         let tracks = file.tracks 
         const trackAddition = req.body && req.body.tracks 
 
-        trackAddition.forEach( (track, i) => {
-            tracks.push({
-                artist: track.artist,
-                title: track.title,
-                id: tracks.length + i
+        if(trackAddition) {
+            trackAddition.forEach( (track, i) => {
+                tracks.push({
+                    artist: track.artist,
+                    title: track.title,
+                    id: tracks.length + i
+                })
             })
-        })
-        try {
-            await WriteToTracksJSON(tracks)
-            res.status(200).json({ data: 'Successfully Uploaded'})
-        } catch(err) {
-            res.status(500).json({ error: err})
-        }
+            try {
+                await WriteToTracksJSON(tracks)
+                res.status(200).json({ data: 'Successfully Uploaded'})
+            } catch(err) {
+                res.status(500).json({ error: err})
+            }
+        } else {
+            return res.status(500).json({ error: 'You do not have the correct body'})
+        }        
     }
 
     async deleteTrack(req, res) {
