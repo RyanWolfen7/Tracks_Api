@@ -19,6 +19,10 @@ Using postman or your browser use these calls
 ### GET localhost:300/find/tracks
 Finds all the tracks on the file
 
+#### Curl Commands
+    curl -X GET   http://localhost:3000/find/tracks \
+    -H 'Content-Type: application/json'   \
+
 #### Successful Response
     {
         "data": [
@@ -47,6 +51,11 @@ finds single track
 1. ?title=YOUR+TITLE
 2. ?artist=YOUR+ARTIST+NAME
 3. ?index=NUM
+
+#### Curl Commands
+    curl -X GET \
+    'http://localhost:3000/find/track?title=Runaway+Train' \ 
+    -H 'Content-Type: application/json'   
 
 #### Successful Response
     {
@@ -110,7 +119,7 @@ Track :  OBJ: { artist: STR, title: STR }
 on the body delcare which track to be deleted
 
 #### Curl Command 
-    ccurl -X DELETE \
+    curl -X DELETE \
     http://localhost:3000/delete/track \
     -H 'Content-Type: application/json' \
     -d '{
