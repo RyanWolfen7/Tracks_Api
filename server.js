@@ -4,40 +4,40 @@ const responseTime = require('response-time')
 const helmet = require('helmet')
 const cors = require('cors')
 const http = require('http')
-const expressWinston = require('express-winston');
+const expressWinston = require('express-winston')
 
 const ONE_YEAR = 31536000000
 const PORT = 3000
 
-let metadata = {};
+let metadata = {}
 
 try {
-    metadata = require('./build-metadata.json');
+  metadata = require('./build-metadata.json')
 } catch (err) {
-    console.log.error(err);
+  console.log.error(err)
 }
 
 let app = express()
 
 // Third party middlewares registration
-app.use(bodyParser.json());
+app.use(bodyParser.json())
 
 app.use(responseTime((req, res, time) => {
-    time = time.toFixed(2);
-    console.log(`Request time: ${time} ms`);
+  time = time.toFixed(2)
+  console.log(`Request time: ${time} ms`)
 
-    // The first request after server boot will be undefined
-    // because there isn't a complete request - response yet
-    metadata.responseTime = time;
-}));
+  // The first request after server boot will be undefined
+  // because there isn't a complete request - response yet
+  metadata.responseTime = time
+}))
 
-app.use(helmet());
+app.use(helmet())
 
 app.use(helmet.hsts({
-    maxAge: ONE_YEAR,
-    includeSubDomains: true,
-    force: true
-}));
+  maxAge: ONE_YEAR,
+  includeSubDomains: true,
+  force: true
+}))
 
 app.use(cors())
 
@@ -47,26 +47,33 @@ expressWinston.requestWhitelist.push('query')
 expressWinston.requestWhitelist.push('body')
 
 app.get('/', (req, res) => {
-    const buildNum = metadata.build_number
-    return res.send(`<h1>Click N Clear</h1><p>Build: ${buildNum}</p>`)
+  const buildNum = metadata.build_number
+  return res.send(`<h1>Click N Clear</h1><p>Build: ${buildNum}</p>`)
 })
 
 app.get('/status', (req, res) => {
-    const resTime = metadata.responseTime;
-    return res.json({
-        data: [{
-            name: 'Click N Clear API',
-            status: 'OK',
-            internalResponseTime: `${resTime} ms`
-        }]
-    })
+  const resTime = metadata.responseTime
+  return res.json({
+    data: [{
+      name: 'Click N Clear API',
+      status: 'OK',
+      internalResponseTime: `${resTime} ms`
+    }]
+  })
 })
 
 try {
-    require('./routes/index')(app)
-    http.createServer(app).listen(PORT, error => {
-        error ? console.log(`Unable to listen on port ${PORT}`, error) : console.log(`Listening on port ${PORT}`)
-    })
+  // validation
+  app.use((req, res, next) => {
+    console.log(req.body)
+    next()
+  })
+
+  // init routes
+  require('./routes/index')(app)
+  http.createServer(app).listen(PORT, error => {
+    error ? console.log(`Unable to listen on port ${PORT}`, error) : console.log(`Listening on port ${PORT}`)
+  })
 } catch (err) {
-    console.log(err)
+  console.log(err)
 }

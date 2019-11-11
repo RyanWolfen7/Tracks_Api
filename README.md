@@ -112,7 +112,6 @@ Track :  OBJ: { artist: STR, title: STR }
 
 ## TO DOs
 1. ADD user TOKENS and AUTH
-2. ADD JOI validators
 3. ADD Required Headers Modal
 4. Set up DB and Intigrate
 5. Create Frontend with React and Redux Thunk

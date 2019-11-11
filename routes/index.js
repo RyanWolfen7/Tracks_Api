@@ -1,27 +1,24 @@
-const TrackControllerClass = require('../controllers/Track')
-const TrackController = new TrackControllerClass()
+const Track = new require('../controllers/Track')()
+const { addTracks, updateTrack, deleteTrack } = require('../validators');
 
+module.exports = (app) => {
+  app.get('/find/track', (req, res) => {
+    Track.getTrack(req, res)
+  })
 
-module.exports = ( app ) => {
-    app.get('/find/track', (req, res ) => {
-        TrackController.getTrack( req, res)
-    })
+  app.get('/find/tracks', (req, res) => {
+    Track.getAllTracks(req, res)
+  })
 
-    app.get('/find/tracks', (req, res ) => {
-        TrackController.getAllTracks(req, res)
-    }) 
+  app.post('/add/tracks', addTracks, (req, res) => {
+    Track.postNewTracks(req, res)
+  })
 
-    app.post('/add/tracks', (req, res) => {
-        TrackController.postNewTracks(req, res)
-    })
+  app.put('/update/track', updateTrack, (req, res) => {
+    Track.updateTrack(req, res)
+  })
 
-    app.put('/update/track', (req, res) => {
-        TrackController.updateTrack(req, res)
-    })
-
-
-    app.delete('/delete/track', (req, res) => {
-        TrackController.deleteTrack(req, res)
-    })
-
+  app.delete('/delete/track', deleteTrack, (req, res) => {
+    Track.deleteTrack(req, res)
+  })
 }
