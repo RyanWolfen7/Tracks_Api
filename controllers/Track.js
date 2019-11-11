@@ -64,7 +64,7 @@ class TrackController {
                     arr.push({
                         artist: track.artist,
                         title: track.title,
-                        id: id
+                        id: id + 1
                     })
                 }
                 return arr
