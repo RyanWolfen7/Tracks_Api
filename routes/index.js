@@ -15,7 +15,7 @@ module.exports = ( app ) => {
         TrackController.postNewTracks(req, res)
     })
 
-    app.put('/update/track/:title', (req, res) => {
+    app.put('/update/track', (req, res) => {
         TrackController.updateTrack(req, res)
     })
 
