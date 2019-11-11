@@ -87,13 +87,15 @@ class TrackController {
         if(title && trackUpdate) {
             tracks = tracks.reduce((arr, track, id) => {
                 if(track.title === title) {
-                    track = {
+                    const updatedTrack = {
                         title: trackUpdate.title,
                         name: trackUpdate.name,
                         id: id
                     }
+                    arr.push(updatedTrack)
+                } else {
+                    arr.push(track)
                 }
-                arr.push(track)
                 return arr
             },[])
 
