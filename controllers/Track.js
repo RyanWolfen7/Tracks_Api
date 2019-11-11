@@ -89,8 +89,8 @@ class TrackController {
                 if(track.title === title) {
                     const updatedTrack = {
                         title: trackUpdate.title,
-                        name: trackUpdate.artist,
-                        id: id
+                        artist: trackUpdate.artist,
+                        id: id + 1
                     }
                     arr.push(updatedTrack)
                 } else {
