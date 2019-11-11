@@ -74,7 +74,7 @@ send an array of tracks to add
 #### Curl Commands
     curl -X POST   http://localhost:3000/add/tracks \
     -H 'Content-Type: application/json'   \
-    -d '{ "tracks": [{ "artist": "Beardthug", "title": "This Falafal Has Drugs In It"}]
+    -d '{ "tracks": [{ "artist": "Ryan Clark", "title": "Carnival of Life"}, { "artist": "Ryan Clark", "title": "Hearts & Spades" }]
 
 #### Required Body
 Tracks : [ OBJ: { artist: STR, title: STR }]
@@ -107,12 +107,12 @@ with a title query and the new fields you want update a track
 #### Required Body
 Track :  OBJ: { artist: STR, title: STR }
     {
-        track: { artist: 'Sam Malone', title: 'Mooba Mooba}
+        track: { artist: 'Beardthug', title: 'This Falafal Has Money In It'}
     }
 
 #### Successful Response
     {
-        data: `Successfully Updated Sam Malone Mooba Mooba 523`
+        data: `Successfully Updated Beardthug This Falafal Has Money In It 500`
     }
 
 ### Delete localhost:3000/delete/track
@@ -125,7 +125,7 @@ on the body delcare which track to be deleted
     -d '{
         "track": {
             "artist": "Beardthug",
-            "title": "This Falafal Has Drugs In It"
+            "title": "This Falafal Has Money In It"
         }
     }'
 
@@ -133,12 +133,12 @@ on the body delcare which track to be deleted
 Track :  OBJ: { artist: STR, title: STR }
 
     {
-        track: { artist: 'Sam Malone', title: 'Mooba Mooba}
+        track: { artist: 'Beardthug', title: 'This Falafal Has Money In It'}
     }
 
 #### Successful Response
     {
-        data: `Successfully Deleted Sam Malone Mooba Mooba 523`
+        data: `Successfully Deleted Beardthug This Falafal Has Money In It 500`
     }
 
 ## TO DOs
