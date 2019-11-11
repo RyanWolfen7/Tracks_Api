@@ -24,7 +24,7 @@ class TrackController {
         return res.json({ data: tracks})
     }
 
-    async putNewTracks(req, res) {
+    async postNewTracks(req, res) {
         let tracks = file.tracks 
         const trackAddition = req.body && req.body.tracks 
 
@@ -50,7 +50,7 @@ class TrackController {
 
         if(!trackDeletion || !trackDeletion.title || !trackDeletion.artist) {
             return res.status(500).json({ error: 'You do not have the correct body'})
-            
+
         } else {
             tracks = tracks.reduce((arr, track, id) => {
                 if(track.artist === trackDeletion.artist && track.title === trackDeletion.title) {
@@ -72,6 +72,10 @@ class TrackController {
         } catch(err) {
             res.status(500).json({ error: err})
         }
+    }
+
+    async updateTrack(req, res) {
+        
     }
 
 }
