@@ -1,4 +1,4 @@
-const FindInArray =  require('../helpers/findTrackController')
+const { FindInArray, WriteToTracksJSON } =  require('../helpers/findTrackController')
 const file = require('../tracks/tracks')
 
 class TrackController {
@@ -24,7 +24,25 @@ class TrackController {
         return res.json({ data: tracks})
     }
 
-    
+    async putNewTracks(req, res) {
+        let tracks = file.tracks 
+        const trackAddition = req.body && req.body.tracks 
+
+        trackAddition.forEach( (track, i) => {
+            tracks.push({
+                artist: track.artist,
+                title: track.title,
+                id: tracks.length + i
+            })
+        })
+        try {
+            await WriteToTracksJSON(tracks)
+            res.status(200).json({ data: 'Successfully Uploaded'})
+        } catch(err) {
+            res.status(500).json({ error: err})
+        }
+    }
+
 }
 
 

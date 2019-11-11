@@ -7,4 +7,8 @@ const FindInArray = (array, search, type) => {
     }, [])
 }
 
+const WriteToTracksJSON = (tracks) => {
+    //add fs stream to file
+}
+
 module.exports = FindInArray

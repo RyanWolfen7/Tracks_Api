@@ -7,7 +7,11 @@ module.exports = ( app ) => {
         TrackController.getTrack( req, res)
     })
 
-    app.get('/find/tracks', (req, res) => {
+    app.get('/find/tracks', ( req, res ) => {
         TrackController.getAllTracks( req, res)
     }) 
+
+    app.put('/add/tracks', ( req, res) => {
+        TrackController.putNewTracks( req, res)
+    })
 }
