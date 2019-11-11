@@ -63,7 +63,7 @@ finds single track
 send an array of tracks to add
 
 #### Required Body
-- Tracks : [ OBJ: { artist: STR, title: STR }]
+Tracks : [ OBJ: { artist: STR, title: STR }]
 
     {
         "tracks": [
@@ -85,7 +85,7 @@ send an array of tracks to add
 with a title query and the new fields you want update a track 
 
 #### Required Body
-- Track :  OBJ: { artist: STR, title: STR }
+Track :  OBJ: { artist: STR, title: STR }
     {
         track: { artist: 'Sam Malone', title: 'Mooba Mooba}
     }
@@ -99,7 +99,7 @@ with a title query and the new fields you want update a track
 on the body delcare which track to be deleted
 
 #### Required Body
-- Track :  OBJ: { artist: STR, title: STR }
+Track :  OBJ: { artist: STR, title: STR }
 
     {
         track: { artist: 'Sam Malone', title: 'Mooba Mooba}
