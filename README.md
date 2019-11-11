@@ -105,7 +105,15 @@ Track :  OBJ: { artist: STR, title: STR }
 on the body delcare which track to be deleted
 
 #### Curl Command 
-    curl -X DELETE \ http://localhost:3000/delete/track \ -H 'Content-Type: application/json' \ -d '{ "track": { "artist": "Beardthug", "title": "This Falafal Has Money In It" } }'
+    ccurl -X DELETE \
+    http://localhost:3000/delete/track \
+    -H 'Content-Type: application/json' \
+    -d '{
+        "track": {
+            "artist": "Beardthug",
+            "title": "This Falafal Has Drugs In It"
+        }
+    }'
 
 #### Required Body
 Track :  OBJ: { artist: STR, title: STR }
