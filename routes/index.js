@@ -14,4 +14,8 @@ module.exports = ( app ) => {
     app.put('/add/tracks', ( req, res) => {
         TrackController.putNewTracks( req, res)
     })
+
+    app.delete('/delete/track', (req, res) => {
+        TrackController.deleteTrack(req, res)
+    })
 }

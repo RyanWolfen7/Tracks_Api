@@ -43,6 +43,37 @@ class TrackController {
         }
     }
 
+    async deleteTrack(req, res) {
+        let tracks = file.tracks 
+        const trackDeletion = req.body && req.body.track
+        let responseData = {}
+
+        if(!trackDeletion || !trackDeletion.title || !trackDeletion.artist) {
+            return res.status(500).json({ error: 'You do not have the correct body'})
+            
+        } else {
+            tracks = tracks.reduce((arr, track, id) => {
+                if(track.artist === trackDeletion.artist && track.title === trackDeletion.title) {
+                    responseData = track
+                    id-- 
+                } else {
+                    arr.push({
+                        artist: track.artist,
+                        title: track.title,
+                        id: id
+                    })
+                }
+            },[])
+        }
+
+        try {
+            await WriteToTracksJSON(tracks)
+            res.status(200).json({ data: `Successfully Deleted ${responseData.artist} ${responseData.tile} ${responseData.id}`})
+        } catch(err) {
+            res.status(500).json({ error: err})
+        }
+    }
+
 }
 
 
