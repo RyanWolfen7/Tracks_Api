@@ -108,5 +108,13 @@ on the body delcare which track to be deleted
         data: `Successfully Deleted Sam Malone Mooba Mooba 523`
     }
 
+## TO DOs
+1. ADD user TOKENS and AUTH
+2. ADD JOI validators
+3. ADD Required Headers Modal
+4. Set up DB and Intigrate
+5. Create Frontend with React and Redux Thunk
+
+
 ## Technologies
 Node.js, Express, cors, http, expressWinston, responseTime, hemlet, bodyParser
