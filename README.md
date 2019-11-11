@@ -59,8 +59,11 @@ finds single track
         ]
     }
 
-### Post localhost:3000/add/tracks
+### POST localhost:3000/add/tracks
 send an array of tracks to add
+
+#### Curl Commands
+    curl -X POST   http://localhost:3000/add/tracks   -H 'Content-Type: application/json'   -d '{ "tracks": [{ "artist": "Beardthug", "title": "This Falafal Has Drugs In It"}]
 
 #### Required Body
 Tracks : [ OBJ: { artist: STR, title: STR }]
@@ -81,8 +84,11 @@ Tracks : [ OBJ: { artist: STR, title: STR }]
 #### Successful Response
     { data: 'Successfully Uploaded' }
 
-### Put localhost:3000/update/track?title=YOUR+TITLE+HERE
+### PUT localhost:3000/update/track?title=YOUR+TITLE+HERE
 with a title query and the new fields you want update a track 
+
+#### Curl Commands
+    curl -X PUT \'http://localhost:3000/update/track?title=This+Falafal+Has+Drugs+In+It' \ -H 'Content-Type: application/json' \ -d '{ "track": { "artist": "Beardthug", "title": "This Falafal Has Money In It" } }'
 
 #### Required Body
 Track :  OBJ: { artist: STR, title: STR }
@@ -97,6 +103,9 @@ Track :  OBJ: { artist: STR, title: STR }
 
 ### Delete localhost:3000/delete/track
 on the body delcare which track to be deleted
+
+#### Curl Command 
+    curl -X DELETE \ http://localhost:3000/delete/track \ -H 'Content-Type: application/json' \ -d '{ "track": { "artist": "Beardthug", "title": "This Falafal Has Money In It" } }'
 
 #### Required Body
 Track :  OBJ: { artist: STR, title: STR }
