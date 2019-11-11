@@ -58,8 +58,7 @@ class TrackController {
         } else {
             tracks = tracks.reduce((arr, track, id) => {
                 if(track.artist === trackDeletion.artist && track.title === trackDeletion.title) {
-                    responseData = track
-                    id-- 
+                    responseData = track 
                 } else {
                     arr.push({
                         artist: track.artist,
