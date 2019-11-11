@@ -33,7 +33,7 @@ class TrackController {
                 tracks.push({
                     artist: track.artist,
                     title: track.title,
-                    id: tracks.length + i
+                    id: tracks.length + (i + 1 )
                 })
             })
             try {

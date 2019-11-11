@@ -10,7 +10,11 @@ const FindInArray = (array, search, type) => {
 }
 
 const WriteToTracksJSON = (tracks) => {
-    fs.writeFileSync('../tracks/tracks.json', JSON.stringify(tracks))
+    const updatedTracks = { tracks: tracks}
+    fs.writeFileSync('./tracks/tracks.json', JSON.stringify(updatedTracks), (err) => {
+        if (err) throw err;
+        console.log('Data written to file');
+    })
 }
 
 module.exports = { FindInArray, WriteToTracksJSON }
