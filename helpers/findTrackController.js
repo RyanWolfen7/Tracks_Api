@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 const FindInArray = (array, search, type) => {
     return array.reduce( (arr, item) => {
         if(item[type] === search) {
@@ -8,7 +10,7 @@ const FindInArray = (array, search, type) => {
 }
 
 const WriteToTracksJSON = (tracks) => {
-    //add fs stream to file
+    fs.writeFileSync('../tracks/tracks.json', JSON.stringify(tracks))
 }
 
-module.exports = FindInArray
+module.exports = { FindInArray, WriteToTracksJSON }
