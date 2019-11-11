@@ -63,7 +63,9 @@ finds single track
 send an array of tracks to add
 
 #### Curl Commands
-    curl -X POST   http://localhost:3000/add/tracks   -H 'Content-Type: application/json'   -d '{ "tracks": [{ "artist": "Beardthug", "title": "This Falafal Has Drugs In It"}]
+    curl -X POST   http://localhost:3000/add/tracks \
+    -H 'Content-Type: application/json'   \
+    -d '{ "tracks": [{ "artist": "Beardthug", "title": "This Falafal Has Drugs In It"}]
 
 #### Required Body
 Tracks : [ OBJ: { artist: STR, title: STR }]
@@ -88,7 +90,10 @@ Tracks : [ OBJ: { artist: STR, title: STR }]
 with a title query and the new fields you want update a track 
 
 #### Curl Commands
-    curl -X PUT \'http://localhost:3000/update/track?title=This+Falafal+Has+Drugs+In+It' \ -H 'Content-Type: application/json' \ -d '{ "track": { "artist": "Beardthug", "title": "This Falafal Has Money In It" } }'
+    curl -X PUT \
+    'http://localhost:3000/update/track?title=This+Falafal+Has+Drugs+In+It' \
+    -H 'Content-Type: application/json' \
+    -d '{ "track": { "artist": "Beardthug", "title": "This Falafal Has Money In It" } }'
 
 #### Required Body
 Track :  OBJ: { artist: STR, title: STR }
