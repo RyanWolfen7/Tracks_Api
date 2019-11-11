@@ -64,6 +64,7 @@ send an array of tracks to add
 
 #### Required Body
 - Tracks : [ OBJ: { artist: STR, title: STR }]
+
     {
         "tracks": [
             {
@@ -99,6 +100,7 @@ on the body delcare which track to be deleted
 
 #### Required Body
 - Track :  OBJ: { artist: STR, title: STR }
+
     {
         track: { artist: 'Sam Malone', title: 'Mooba Mooba}
     }
