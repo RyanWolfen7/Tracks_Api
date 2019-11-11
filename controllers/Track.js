@@ -1,9 +1,9 @@
 const FindInArray =  require('../helpers/findTrackController')
+const file = require('../tracks/tracks')
 
 class TrackController {
 
     getTrack(req, res) {
-        const file = require('../tracks/tracks')
         const { artist, title, index } = req.query
         const tracks = file.tracks 
 
@@ -18,6 +18,13 @@ class TrackController {
         }
         return res.json({ data: 'You have not provided a search query'})
     }
+
+    getAllTracks(req, res) {
+        const tracks = file.tracks 
+        return res.json({ data: tracks})
+    }
+
+    
 }
 
 

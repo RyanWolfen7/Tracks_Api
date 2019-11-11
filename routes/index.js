@@ -3,7 +3,11 @@ const TrackController = new TrackControllerClass()
 
 
 module.exports = ( app ) => {
-    app.get('/find', ( req, res ) => {
+    app.get('/find/track', ( req, res ) => {
         TrackController.getTrack( req, res)
     })
+
+    app.get('/find/tracks', (req, res) => {
+        TrackController.getAllTracks( req, res)
+    }) 
 }
