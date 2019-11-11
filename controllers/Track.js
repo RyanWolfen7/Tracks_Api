@@ -63,6 +63,7 @@ class TrackController {
                         id: id
                     })
                 }
+                return arr
             },[])
         }
 
@@ -75,7 +76,32 @@ class TrackController {
     }
 
     async updateTrack(req, res) {
-        
+        let tracks = file.tracks 
+        const { title } = req.query
+        const trackUpdate = req.body && req.body.track
+
+        if(title && trackUpdate) {
+            tracks = tracks.reduce((arr, track, id) => {
+                if(track.title === title) {
+                    track = {
+                        title: trackUpdate.title,
+                        name: trackUpdate.name,
+                        id: id
+                    }
+                }
+                arr.push(track)
+                return arr
+            },[])
+
+            try {
+                await WriteToTracksJSON(tracks)
+                res.status(200).json({ data: `Successfully Updated ${trackUpdate.artist} ${trackUpdate.tile} ${trackUpdate.id}`})
+            } catch(err) {
+                res.status(500).json({ error: err})
+            }
+        } else {
+            return res.status(500).json({ error: 'You do not have the correct body and/or query'})
+        }
     }
 
 }
